@@ -20,7 +20,7 @@ This project is:
 4. matplotlib.pyplot 
 5. The dataset file is as follow:
 
-![img.png](img.png)
+![img.png](img/img.png)
 
 ## Run and Result
 
@@ -34,22 +34,22 @@ Upon running the script, it will display the mean, median, and standard deviatio
 
 To show correctly reading the dataset, I use the head() function to display the first 5 rows of the dataset
 
-![img_4.png](img_4.png)
+![img_4.png](img/img_4.png)
 
 Further, I display the basic statistics of the dataset and three summary of statistics
 
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 
 For the data visualization, I plot the histogram of the `Salary` of the dataset:
 
-![img_2.png](img_2.png)
+![img_2.png](img/img_2.png)
 
 ### Test
 
 use 
 `make test` or `python test_main.py` to test the script
 
-![img_3.png](img_3.png)
+![img_3.png](img/img_3.png)
 
 ## Reference
 
