@@ -6,15 +6,29 @@
 
 > Duke University IDS 706 Weekly Mini Project 2
 
-create a descriptive statistics script using Pandas lib in Python
+This create a descriptive statistics script using Pandas and display basic information about the data set.
+
+![img_2.png](img_2.png)
 
 ## Preparation
 
-1. Open in the Github codespaces
-2. Do simple test in the terminal
+1. make sure a data.csv file is in the same directory as main.py
+2. Python 3.x.x
+3. Pandas
 
 ## Run and Result
 
+### Run
+
+`python main.py`
+
+### Result
+![img.png](img.png)
+
+### Test
+`make test` or `python test_main.py`
+
+![img_3.png](img_3.png)
 
 
 ## Reference

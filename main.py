@@ -8,13 +8,14 @@ Main cli or app entry point
 
 import pandas as pd
 
+
 def load_data(filename):
     return pd.read_csv(filename)
 
 
-def display_data(data):
-    print("Data preview:")
-    print(data.head())
+def display_salary_larger_than_60000(data):
+    print("Salary larger than 60000:")
+    print(data[data['Salary'] > 60000])
     print("\n")
 
 
@@ -24,27 +25,11 @@ def display_basic_statistics(data):
     print("\n")
 
 
-def display_median(data):
-    print("Median of the columns:")
-    for column in data.columns:
-        print(f"Median of {column}: {data[column].median()}")
-    print("\n")
-
-
-def display_mode(data):
-    print("Mode of the columns:")
-    for column in data.columns:
-        mode_value = data[column].mode()[0]
-        print(f"Mode of {column}: {mode_value}")
-    print("\n")
-
-
 def main():
     data = load_data('data.csv')
-
-    display_data(data)
     display_basic_statistics(data)
-    display_median(data)
+    display_salary_larger_than_60000(data)
+
 
 if __name__ == "__main__":
     main()
