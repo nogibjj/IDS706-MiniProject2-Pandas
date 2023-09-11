@@ -6,7 +6,7 @@
 
 > Duke University IDS 706 Weekly Mini Project 2
 
-This create a descriptive statistics script using Pandas and display basic information about the data set.
+This create a descriptive statistics script using Pandas and display basic information about the data set as well as filter the salary that larger than 60000.
 
 ![img_2.png](img_2.png)
 
