@@ -3,6 +3,7 @@ from unittest.mock import patch
 import pandas as pd
 import main  # Assuming main.py is in the same directory
 
+
 class TestMainMethods(unittest.TestCase):
 
     def setUp(self):
@@ -32,6 +33,7 @@ class TestMainMethods(unittest.TestCase):
         mock_xlabel.assert_called_once_with('Index')
         mock_ylabel.assert_called_once_with('Salary')
         mock_show.assert_called_once()
+
 
 if __name__ == '__main__':
     unittest.main()
