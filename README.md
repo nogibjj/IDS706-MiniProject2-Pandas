@@ -40,7 +40,7 @@ Further, I display the basic statistics of the dataset and three summary of stat
 
 ![img_1.png](img_1.png)
 
-For the data visualization, I plot the histogram of the dataset:
+For the data visualization, I plot the histogram of the `Salary` of the dataset:
 
 ![img_2.png](img_2.png)
 
