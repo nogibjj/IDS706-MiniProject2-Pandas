@@ -7,29 +7,42 @@ Main cli or app entry point
 """
 
 import pandas as pd
-
+import matplotlib.pyplot as plt
 
 def load_data(filename):
     return pd.read_csv(filename)
 
-
-def display_salary_larger_than_60000(data):
-    print("Salary larger than 60000:")
-    print(data[data['Salary'] > 60000])
+def display_dataset_head(data):
+    print("Dataset Head:")
+    print(data.head())
     print("\n")
-
 
 def display_basic_statistics(data):
     print("Basic Descriptive Statistics:")
     print(data.describe())
     print("\n")
 
+def generate_summary_statistics(data):
+    print("Mean:\n", data.mean())
+    print("\nMedian:\n", data.median())
+    print("\nStandard Deviation:\n", data.std())
+    print("\n")
+
+def create_visualization(data):
+    # Plotting Salary distribution as an example
+    data['Salary'].plot(kind='bar')
+    plt.title('Salary Distribution')
+    plt.xlabel('Index')
+    plt.ylabel('Salary')
+    plt.show()
 
 def main():
     data = load_data('data.csv')
+    display_dataset_head(data)
     display_basic_statistics(data)
-    display_salary_larger_than_60000(data)
-
+    generate_summary_statistics(data)
+    create_visualization(data)
 
 if __name__ == "__main__":
     main()
+

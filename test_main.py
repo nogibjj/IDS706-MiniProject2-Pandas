@@ -1,49 +1,37 @@
-"""
-Test goes here
-
-"""
-
-# test_main.py
-
 import unittest
+from unittest.mock import patch
 import pandas as pd
 import main  # Assuming main.py is in the same directory
 
 class TestMainMethods(unittest.TestCase):
 
     def setUp(self):
-        # This method will be executed before each test method, setting up the data for the tests
-        self.data = pd.DataFrame({
-            'Age': [25, 30, 35, 40, 45],
-            'Salary': [50000, 55000, 60000, 65000, 70000],
-            'Score': [85, 89, 78, 90, 82]
-        })
+        self.data = main.load_data('data.csv')
 
     def test_load_data(self):
         data = main.load_data('data.csv')
-        self.assertTrue(isinstance(data, pd.DataFrame))  # Check if data is a DataFrame
-        self.assertNotEqual(len(data), 0)  # Check if DataFrame is not empty
+        self.assertTrue(isinstance(data, pd.DataFrame))
+        # Check if the columns are as expected
+        self.assertListEqual(list(data.columns), ['Age', 'Salary', 'Score'])
 
-    def test_display_median(self):
-        medians = {
-            'Age': 35.0,
-            'Salary': 60000.0,
-            'Score': 85.0
-        }
-        for column in self.data.columns:
-            self.assertEqual(self.data[column].median(), medians[column])
+    def test_generate_summary_statistics(self):
+        # Since this function just prints, we can capture print outputs and verify
+        with patch("builtins.print") as mock_print:
+            main.generate_summary_statistics(self.data)
+            self.assertEqual(mock_print.call_count, 4)  # Ensure print was called four times
 
-    def test_display_salary_larger_than_60000(self):
-        data = self.data[self.data['Salary'] > 60000]
-        self.assertEqual(len(data), 2)  # Ensure the output only contains 2 entries
-        # Ensure the output contains the entry with a salary of 65000
-        self.assertTrue(65000 in data['Salary'].values)
-        self.assertTrue(70000 in data['Salary'].values)
-
-        # Ensure the output does not contain entries with a salary less than or equal to 60000
-        self.assertFalse(50000 in data['Salary'].values)
-        self.assertFalse(55000 in data['Salary'].values)
-        self.assertFalse(60000 in data['Salary'].values)
+    @patch("matplotlib.pyplot.show")
+    @patch("matplotlib.pyplot.ylabel")
+    @patch("matplotlib.pyplot.xlabel")
+    @patch("matplotlib.pyplot.title")
+    @patch.object(pd.Series, "plot")
+    def test_create_visualization(self, mock_plot, mock_title, mock_xlabel, mock_ylabel, mock_show):
+        main.create_visualization(self.data)
+        mock_plot.assert_called_once()
+        mock_title.assert_called_once_with('Salary Distribution')
+        mock_xlabel.assert_called_once_with('Index')
+        mock_ylabel.assert_called_once_with('Salary')
+        mock_show.assert_called_once()
 
 if __name__ == '__main__':
     unittest.main()
